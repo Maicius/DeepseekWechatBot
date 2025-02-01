@@ -30,10 +30,10 @@ class DeepWechat(object):
         print("消息长度:", len(self.msg))
 
     def apply_for_start_msg(self):
-        print("开始初始化")
+        print("开始初始化...")
         response = self.do_apply_deepseek(self.msg)
         self.msg.append(response.choices[0].message)
-        print("初始化成功，开始学习聊天记录", response.choices[0].message)
+        print("初始化成功，开始学习聊天记录：", response.choices[0].message.content)
         self.init_records()
 
     def do_apply_deepseek(self, msg):
