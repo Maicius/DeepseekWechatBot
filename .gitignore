@@ -3,3 +3,5 @@ api_key.json
 itchat.pkl
 *.csv
 __pycache__/
+*.png
+context.json

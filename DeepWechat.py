@@ -1,6 +1,7 @@
 import json
 from openai import OpenAI
 from Util import process_records
+import os
 
 class DeepWechat(object):
     def __init__(self):
