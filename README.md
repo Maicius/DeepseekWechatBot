@@ -1,7 +1,12 @@
 # DeepseekWechatBot
 
-使用deepseek学习和指定微信好友之间的聊天记录，然后模仿自己和该好友对话。
+基于Deepseek和Itchat的微信聊天机器人
+
+### 主要功能：
+> 1.使用deepseek学习和指定微信好友之间的聊天记录，然后模仿自己和该好友对话。
 不是模型微调，只是把聊天记录先发过去，保存对话对上下文。
+
+> 2.夸夸夸机器人，在微信群中呼喊"小麦同学"，并说"夸XXX"，就会对指定对象吹彩虹屁。
 
 ### LIMIT
 
@@ -34,3 +39,6 @@
 做好以上准备工作：
 > python main.py
 
+### NOTICE
+
+若出现HTMLParse错误，请参考：[使用python3.9，会报错](https://github.com/littlecodersh/ItChat/issues/963)

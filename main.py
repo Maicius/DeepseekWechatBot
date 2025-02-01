@@ -1,13 +1,13 @@
 import itchat
 from itchat.content import *
 from DeepWechat import DeepWechat
-from Util import process_records
+
 
 @itchat.msg_register([TEXT, MAP, CARD, NOTE, SHARING])
 def text_reply(msg):
     # 只与指定的微信对象聊天
     target_wechat_name = {"小冬子", "filehelper"}
-    print(msg.text)
+    print("收到消息", msg.text)
     if msg['FromUserName'] not in target_wechat_name:
         return
     deep_seek_content = deepWechat.apply_for_deepseek(msg)
@@ -29,6 +29,7 @@ def text_reply(msg):
         }]
         deep_seek_content = deepWechat.do_apply_deepseek(context)
         msg.user.send('%s' % deep_seek_content)
+
 
 deepWechat = DeepWechat()
 deepWechat.apply_for_start_msg()
