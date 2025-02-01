@@ -1,4 +1,5 @@
-import json
+import json, time
+import traceback
 from openai import OpenAI
 from Util import process_records
 
@@ -37,17 +38,20 @@ class DeepWechat(object):
         self.init_records()
 
     def do_apply_deepseek(self, msg):
-        try:
-            response = self.client.chat.completions.create(
-                model="deepseek-chat",
-                messages=msg,
-                stream=False,
-                timeout=10.0
-            )
-            return response
-        except BaseException as e:
-            print("ERROR================\n网络出错，请稍后再试")
-            raise e
+        # 尝试五次
+        for i in range(5):
+            print("第{}次尝试".format(i + 1))
+            try:
+                response = self.client.chat.completions.create(
+                    model="deepseek-chat",
+                    messages=msg,
+                    stream=False
+                )
+                return response
+            except BaseException as e:
+                print("ERROR================\n网络出错，请稍后再试", e)
+                print(traceback.print_exc())
+                time.sleep(2)
 
     def apply_for_start_msg_group(self):
         response = self.do_apply_deepseek(self.group_context)
