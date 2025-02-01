@@ -39,7 +39,7 @@ class DeepWechat(object):
 
     def do_apply_deepseek(self, msg):
         # 尝试五次
-        for i in range(5):
+        for i in range(10):
             print("第{}次尝试".format(i + 1))
             try:
                 response = self.client.chat.completions.create(
@@ -50,8 +50,8 @@ class DeepWechat(object):
                 return response
             except BaseException as e:
                 print("ERROR================\n网络出错，请稍后再试", e)
-                print(traceback.print_exc())
-                time.sleep(2)
+                # print(traceback.print_exc())
+                time.sleep(5)
 
     def apply_for_start_msg_group(self):
         response = self.do_apply_deepseek(self.group_context)

@@ -8,8 +8,14 @@ def text_reply(msg):
     # 只与指定的微信对象聊天
     target_wechat_name = {"小冬子", "filehelper"}
     print("收到消息", msg.text)
-    if msg['FromUserName'] not in target_wechat_name:
-        return
+    try:
+        if msg['User']['NickName'] not in target_wechat_name:
+            return
+    except BaseException as e:
+        print(e)
+        if msg['User']['UserName'] not in target_wechat_name:
+            return
+
     deep_seek_content = deepWechat.apply_for_deepseek(msg)
     msg.user.send('%s' % deep_seek_content)
 
@@ -32,7 +38,7 @@ def text_reply(msg):
 
 
 deepWechat = DeepWechat()
-deepWechat.apply_for_start_msg()
+# deepWechat.apply_for_start_msg()
 if __name__ == '__main__':
     itchat.auto_login(True)
     itchat.run(True)

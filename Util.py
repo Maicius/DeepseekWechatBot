@@ -18,4 +18,5 @@ def pro_emoji(x):
 
 
 if __name__ == '__main__':
-    process_records()
+    text = process_records()
+    print(text)
