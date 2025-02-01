@@ -38,7 +38,7 @@ class DeepWechat(object):
         self.init_records()
 
     def do_apply_deepseek(self, msg):
-        # 尝试五次
+        # 尝试10次
         for i in range(10):
             print("第{}次尝试".format(i + 1))
             try:
@@ -52,6 +52,7 @@ class DeepWechat(object):
                 print("ERROR================\n网络出错，请稍后再试", e)
                 # print(traceback.print_exc())
                 time.sleep(5)
+        return
 
     def apply_for_start_msg_group(self):
         response = self.do_apply_deepseek(self.group_context)
@@ -63,12 +64,7 @@ class DeepWechat(object):
             "role": "user",
             "content": message
         })
-        response = self.client.chat.completions.create(
-            model="deepseek-chat",
-            messages=self.group_context,
-            stream=False,
-            timeout=10.0
-        )
+        response = self.do_apply_deepseek(self.group_context)
         if message.find("结束本轮对话") != -1:
             self.group_context = self.group_context[0:2]
         else:
@@ -78,7 +74,7 @@ class DeepWechat(object):
     def apply_for_deepseek(self, messages):
         self.msg.append({
             "role": "user",
-            "content": messages.text
+            "content": messages
         })
         print("开始请求,", self.msg)
         response = self.do_apply_deepseek(self.msg)

@@ -11,12 +11,15 @@ def text_reply(msg):
     try:
         if msg['User']['NickName'] not in target_wechat_name:
             return
+        else:
+            chat_msg = "{}:{}".format(msg['User']['NickName'], msg.text)
     except BaseException as e:
         print(e)
         if msg['User']['UserName'] not in target_wechat_name:
             return
-
-    deep_seek_content = deepWechat.apply_for_deepseek(msg)
+        else:
+            chat_msg = "{}:{}".format(msg['User']['UserName'], msg.text)
+    deep_seek_content = deepWechat.apply_for_deepseek(chat_msg)
     msg.user.send('%s' % deep_seek_content)
 
 
