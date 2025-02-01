@@ -2,3 +2,4 @@ api_key.json
 .idea
 itchat.pkl
 *.csv
+__pycache__/
