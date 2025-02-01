@@ -38,7 +38,7 @@ def text_reply(msg):
 
 
 deepWechat = DeepWechat()
-# deepWechat.apply_for_start_msg()
+deepWechat.apply_for_start_msg()
 if __name__ == '__main__':
     itchat.auto_login(True)
     itchat.run(True)
