@@ -17,12 +17,17 @@ def text_reply(msg):
 @itchat.msg_register(TEXT, isGroupChat=True)
 def text_reply(msg):
     if msg.text.find("小麦同学") != -1 and not msg.isAt:
+        # 在群聊里夸某人
         con_text = "这个消息直接回复，不要把思考过程发出来。{}".format(msg.text)
         if con_text.find('夸') != -1:
             deep_seek_content = deepWechat.apply_for_group(con_text)
             msg.user.send('%s' % deep_seek_content)
+    # 在群聊里回应对方的内容，需同时@某人并呼喊"小麦同学"
     if msg.text.find("小麦同学") != -1 and msg.isAt:
-        deep_seek_content = deepWechat.apply_for_deepseek(msg)
+        context = [{
+            "role": "user", "context": msg.text
+        }]
+        deep_seek_content = deepWechat.do_apply_deepseek(context)
         msg.user.send('%s' % deep_seek_content)
 
 deepWechat = DeepWechat()
