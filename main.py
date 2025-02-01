@@ -1,6 +1,7 @@
 import itchat
 from itchat.content import *
 from DeepWechat import DeepWechat
+from Util import process_records
 
 @itchat.msg_register([TEXT, MAP, CARD, NOTE, SHARING])
 def text_reply(msg):
@@ -25,8 +26,8 @@ def text_reply(msg):
         deep_seek_content = deepWechat.apply_for_deepseek(msg)
         msg.user.send('%s' % deep_seek_content)
 
-
 deepWechat = DeepWechat()
+deepWechat.apply_for_start_msg()
 if __name__ == '__main__':
     itchat.auto_login(True)
     itchat.run(True)
