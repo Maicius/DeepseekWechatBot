@@ -14,5 +14,6 @@ def pro_emoji(x):
     if x['emoji']:
         x['StrContent'] = 'emoji'
 
+
 if __name__ == '__main__':
     process_records()

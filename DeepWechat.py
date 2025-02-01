@@ -1,7 +1,7 @@
 import json
 from openai import OpenAI
 from Util import process_records
-import os
+
 
 class DeepWechat(object):
     def __init__(self):
@@ -20,8 +20,6 @@ class DeepWechat(object):
         self.group_context = [
             {"role": 'user', 'content': self.promot['kuakua']}
         ]
-        # self.apply_for_start_msg()
-        # self.apply_for_start_msg_group()
 
     def init_start_msg(self):
         """
@@ -96,7 +94,7 @@ class DeepWechat(object):
         )
         print("学习聊天记录成功,{}".format(response.choices[0].message.content))
         self.msg.append(response.choices[0].message)
-        self.msg.append({"role": "user", "content": "接下来我会把她发给我的话转发给你，你替我回复一下，千万别让她发现你是AI"})
+        self.msg.append({"role": "user", "content": self.promot['begin_msg']})
         response = self.client.chat.completions.create(
             model="deepseek-chat",
             messages=self.msg,

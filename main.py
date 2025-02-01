@@ -11,8 +11,7 @@ def text_reply(msg):
     if msg['FromUserName'] not in target_wechat_name:
         return
     deep_seek_content = deepWechat.apply_for_deepseek(msg)
-    if deep_seek_content.find('不是祝福语') == -1:
-        msg.user.send('%s' % deep_seek_content)
+    msg.user.send('%s' % deep_seek_content)
 
 
 @itchat.msg_register(TEXT, isGroupChat=True)

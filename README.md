@@ -17,11 +17,17 @@
 
 2.[PyWxDump](https://github.com/xaoyaoo/PyWxDump)
 
-### 申请Deepseek API KEY
+将导出的聊天记录保存为csv，csv处理的代码在[Util.py](./Util.py)中
+
+#### 申请Deepseek API KEY
 
 [Deepseek开发者平台](https://www.deepseek.com/)
-
 有免费的10块钱额度，够用很多次了。
+
+#### 在main.py中修改指定聊天微信对象的昵称。
+
+为便于测试，同时把文件传输助手filehelper加上
+> target_wechat_name = {"XXX", "filehelper}
 
 ### BEGIN
 
