@@ -5,9 +5,11 @@
 
 ### LIMIT
 
-本项目基于itchat，即使用网页微信登陆，必须先确保自己的微信号能登陆[网页微信](https://wx.qq.com/)才可以使用，
+> 1.本项目基于itchat，即使用网页微信登陆，必须先确保自己的微信号能登陆[网页微信](https://wx.qq.com/)才可以使用。
 
-### BEGIN
+> 2.由于deepseek接口不稳定，所以经常失败
+
+### PREPARE
 
 使用第三方工具导出聊天记录，经测试，只能在windows环境下进行，这里推荐两个工具：
 
@@ -20,4 +22,9 @@
 [Deepseek开发者平台](https://www.deepseek.com/)
 
 有免费的10块钱额度，够用很多次了。
+
+### BEGIN
+
+做好以上准备工作：
+> python main.py
 
